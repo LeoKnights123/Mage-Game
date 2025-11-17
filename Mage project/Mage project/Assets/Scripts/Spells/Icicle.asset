@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ab7c1dc01ee03244bd566c4214daec8, type: 3}
-  m_Name: Fireball
+  m_Name: Icicle
   m_EditorClassIdentifier: 
-  ManaCost: 10
+  ManaCost: 20
   Lifetime: 2
-  Speed: 15
-  Damage: 10
+  Speed: 30
+  Damage: 25
   SpellRadius: 0.5

@@ -1661,10 +1661,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9abecdf38525fc148b5e72f4a4ec4fa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellToCast: {fileID: 858522568418168726, guid: 3ac5531d3dd7e9f4e92f1193c3f66d7d, type: 3}
+  spellToCast: {fileID: 858522568418168726, guid: c526ce9a0a2f944439c6eac5a0a24949, type: 3}
   maxMana: 100
   currentMana: 100
-  mamaRechargeRate: 2
+  mamaRechargeRate: 10
+  timeToWaitForRecharge: 5
+  currentManaRechargeTimer: 0
   timeBetweenCasts: 0.25
   castPoint: {fileID: 1964197050}
 --- !u!4 &640761834 stripped
