@@ -29,7 +29,7 @@ public class Spell : MonoBehaviour
 
     private void Update()
     {
-        if (SpellToCast.Speed > 0) transform.Translate(transform.forward * SpellToCast.Speed * Time.deltaTime);
+        if (SpellToCast.Speed > 0) transform.Translate(Vector3.forward * SpellToCast.Speed * Time.deltaTime);
     }
 
 
@@ -39,6 +39,17 @@ public class Spell : MonoBehaviour
         //apply the spell effect to what we hit
         //apply hit particle effects
         //sound effects
+        
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            HealthComponent enemyHealth = other.GetComponent<HealthComponent>();
+            enemyHealth.TakeDamage(SpellToCast.Damage);
+        }
+        
+
+        
+        
+        
         Destroy(this.gameObject);
     }
 }
