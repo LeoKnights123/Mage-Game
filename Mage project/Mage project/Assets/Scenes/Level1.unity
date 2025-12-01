@@ -2670,7 +2670,9 @@ MonoBehaviour:
   spellToCast: {fileID: 858522568418168726, guid: c526ce9a0a2f944439c6eac5a0a24949, type: 3}
   maxMana: 100
   currentMana: 0
-  manaRechargeRate: 0
+  manaRechargeRate: 25
+  timeToWaitForRecharge: 8
+  currentManaRechargerTimer: 0
   timeBetweenCasts: 0.25
   castPoint: {fileID: 456766200}
 --- !u!43 &1741952712
