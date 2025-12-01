@@ -2777,7 +2777,7 @@ MonoBehaviour:
   currentMana: 0
   manaRechargeRate: 0
   timeBetweenCasts: 0.25
-  castPoint: {fileID: 0}
+  castPoint: {fileID: 456766200}
 --- !u!43 &1758386681
 Mesh:
   m_ObjectHideFlags: 0
