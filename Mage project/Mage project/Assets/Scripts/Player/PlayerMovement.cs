@@ -1,60 +1,42 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+
+public class PlayerMovementCC : MonoBehaviour
 {
-    [Header("Movement")]
-    public float moveSpeed;
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float gravity = -9.81f;
+    [SerializeField] private float jumpForce = 4f;
 
-    public Transform orientation;
+    CharacterController characterController;
+    private Vector3 velocity;
 
-    float horizontalInput;
-    float verticalInput;
-
-
-    Vector3 movemDirection;
-
-    Rigidbody rb;
-
-
-
-
-
-    private void Start()
+    void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
+        characterController = GetComponent<CharacterController>();
     }
 
-
-
-    private void Update()
+    void Update()
     {
-        MyInput();
-    }
+        // horizontal input
+        Vector3 move = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
 
+        // ensure a small downward force when grounded
+        if (characterController.isGrounded && velocity.y < 0f)
+        {
+            velocity.y = -2f;
+        }
 
-    private void FixedUpdate()
-    {
-        MovePlayer();
-    }
+        // jump input
+        if (Input.GetButtonDown("Jump") && characterController.isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
+        }
 
+        // apply gravity
+        velocity.y += gravity * Time.deltaTime;
 
-    private void MyInput()
-    {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
-    }
-
-
-
-
-    private void MovePlayer()
-    {
-        //calculate movement direction
-
-        movemDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-
-        rb.AddForce(movemDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-
+        // combine horizontal and vertical and call Move once
+        Vector3 finalMove = move * speed + new Vector3(0f, velocity.y, 0f);
+        characterController.Move(finalMove * Time.deltaTime);
     }
 }
